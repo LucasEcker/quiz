@@ -1,0 +1,205 @@
+ <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <title>Quizz</title>
+
+</head>
+<body background="sera.png"></body>
+<img src="joao.jpg" id="joao.jpg">
+    <style>        #frame001 {
+            border-radius: 5px;
+            background-color: rgba(110, 187, 231, 0);
+            border: 2px solid black;
+            height: 350px;
+            width: 400px;
+        }
+
+        .buttons001 {
+            background-color: rgba(55, 10, 161, 0.842);
+             color: white;
+            width: 70px;
+            height: 30px;
+            border-radius: 5px;
+        }
+
+        .buttons002 {
+            background-color: rgba(0, 0, 255, 0.863);
+            color: white;
+            width: 70px;
+            height: 30px;
+            border-radius: 5px;
+        }
+
+        #font001 {
+            text-align: center;
+            font-size: large;
+            color: black;
+        }
+    </style>
+    <div id="frame001">
+        <div id="font001">
+         <h2>Verdadeiro ou falso</h2><text>Question: <text id="number001">0</text></text><br />
+         <text>Score: <text id="score001">0</text></text>
+            <hr />
+            <div id="disappear001">
+                <button class="buttons002" onclick="Início001()">Início</button>
+            </div>
+            <p id="message001"></p>
+            <p id="message002"></p>
+            <p id="message003"></p>
+            <p id="message004"></p>
+        </div>
+    </div>
+    <script>
+        var question001 = ["A soma dos quadrados dos catetos de um triângulo é igual ao quadrado de sua hipotenusa.",
+            "O quadrado da hipotenusa é igual a diferença dos quadrados dos catetos..",
+            "Hipotenusa: é o lado oposto ao ângulo reto, sendo considerado o maior lado do triângulo retângulo.",
+            "Catetos: são os lados do triângulo que formam o ângulo reto. São classificados em: cateto adjacente e cateto oposto.",
+            "A trigonometria é a ciência responsável pelas relações estabelecidas entre os triângulos. Estes são figuras geométricas espaciais compostas de três lados e três ângulos internos",
+            "O Teorema de Tales é um caso especial do Teorema do ângulo inscrito. Seja um triângulo ABC, inscrito numa circunferência. Em geometria, o teorema de Tales afirma que se AC é o diâmetro desta circunferência, então os pontos ABC formam um triângulo retângulo.",
+            "O Teorema de Tales foi estabelecido por Tales de Mileto, consiste em uma interseção entre duas retas paralelas e transversais que formam segmentos proporcionais.",
+            "Tales de Mileto foi um importante filósofo, astrânomo e matemático grego que viveu depois de Cristo. Ele usou seus conhecimentos sobre Geometria e proporcionalidade para determinar a altura de uma pirâmide.",
+            "Em seus estudos, Tales observou que os raios solares que chegavam à Terra estavam na posição inclinada e eram paralelos, dessa forma, ele concluiu que havia uma proporcionalidade entre as medidas da sombra e da altura dos objetos.."
+        ];
+
+        var options001 = ["<button class=buttons001 onclick=q1i()>Verdadeiro</button><br /><br /><button class=buttons001 onclick=q1c()>Falso</button>"];
+        var options002 = ["<button class=buttons001 onclick=q1c()>Falso</button><br /><br /><button class=buttons001 onclick=q1i()>Verdadeiro</button>"];
+        var options003 = ["<button class=buttons001 onclick=q1c()>Verdadeiro</button><br /><br /><button class=buttons001 onclick=q1i()>Falso</button>"];
+        var options004 = ["<button class=buttons001 onclick=q1i()>Verdadeiro</button><br /><br /><button class=buttons001 onclick=q1c()>Falso</button>"];
+        var options005 = ["<button class=buttons001 onclick=q1c()>Falso</button><br /><br /><button class=buttons001 onclick=q1i()>Verdadeiro</button>"];
+        var options006 = ["<button class=buttons001 onclick=q1i()>Falso</button><br /><br /><button class=buttons001 onclick=q1c()>Verdadeiro</button>"];
+        var options007 = ["<button class=buttons001 onclick=q1c()>Verdadeiro</button><br /><br /><button class=buttons001 onclick=q1i()>Falso</button>"];
+        var options008 = ["<button class=buttons001 onclick=q1c()>Falso</button><br /><br /><button class=buttons001 onclick=q1i()>Verdadeiro</button>"];
+        var options009 = ["<button class=buttons001 onclick=q1c()>Verdadeira</button><br /><br /><button class=buttons001 onclick=q1i()>Falso</button>"];
+        var options010 = ["<button class=buttons001 onclick=q1i()>Verdadeiro</button><br /><br /><button class=buttons001 onclick=q1c()>Falso</button>"];
+
+        var a = 0;
+        a++;
+        var b = 0;
+        b++;
+        var nota = 10;
+
+        function Início001() {
+            disappear001.innerHTML = "";
+            message001.innerHTML = question001[0];
+            message002.innerHTML = options001;
+            number001.innerHTML = a++;
+        }
+
+        function q1c() {
+            message003.innerHTML = "Correct"
+            document.getElementById("joao").style.top="200px";
+            message002.innerHTML = "";
+            score001.innerHTML = b++;
+            message004.innerHTML = "<button class=buttons002 onclick=next001()>Next</button>";
+        }
+
+        function q1i() {
+            message003.innerHTML = "Incorrect";
+            message002.innerHTML = "";
+            message004.innerHTML = "<button class=buttons002 onclick=next001()>Next</button>";
+        }
+        
+        function atualizaNota(){
+    
+        nota = ((b-1))/((a-1))*10
+        document.getElementById("nota").innerHTML = nota.toFixed(1);
+        if(nota<7){
+        document.getElementById("nota").style["color"] = "red";
+        
+        
+        }else 
+        document.getElementById("nota").style["color"] = "blue";
+        }
+        function next001() {
+           atualizaNota();
+            if (a == "2") {
+                message001.innerHTML = question001[1];
+                message002.innerHTML = options002;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            }
+
+            else if (a == "3") {
+                message001.innerHTML = question001[2];
+                message002.innerHTML = options003;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            }
+
+            else if (a == "4") {
+                message001.innerHTML = question001[3];
+                message002.innerHTML = options004;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            }
+
+            else if (a == "5") {
+                message001.innerHTML = question001[4];
+                message002.innerHTML = options005;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            }
+
+            else if (a == "6") {
+                message001.innerHTML = question001[5];
+                message002.innerHTML = options006;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            }
+
+            else if (a == "7") {
+                message001.innerHTML = question001[6];
+                message002.innerHTML = options007;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            }
+
+            else if (a == "8") {
+                message001.innerHTML = question001[7];
+                message002.innerHTML = options008;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            }
+
+            else if (a == "9") {
+                message001.innerHTML = question001[8];
+                message002.innerHTML = options009;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            }
+
+            else if (a == "10") {
+                message001.innerHTML = question001[9];
+                message002.innerHTML = options010;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            } else {
+                message001.innerHTML = "End of Quiz";
+                message002.innerHTML = "";
+                message003.innerHTML = "";
+                message004.innerHTML = "<button class=buttons002 onclick=repeat001()>Repeat</button>";
+            }
+        }
+
+        function repeat001() {
+            location.reload();
+        }
+    </script>
+
+    <text id= "nota" style="color:black;font-size:100px;"> 10 </text>
+
+
+
+</body>
+</html>
